@@ -6,7 +6,14 @@ const fetchBreedDescription = (breedName, cb) => {
     if (error) {
       cb(error, null);
     } else {
-      cb(null, body);
+      const data = JSON.parse(body);
+      console.log(data)
+      if (data.length === 0) {
+          cb("errrprr", null)
+      } //body = '[]' => []
+      else{
+        cb(null, data);
+      }
     }
   });
 };
